@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const pizzaSchema = new Schema({
-    _id: {
-        type: String,
-        required : true
-    },
+let Schema = mongoose.Schema;
+
+let PizzaSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -18,10 +15,13 @@ const pizzaSchema = new Schema({
         type: String,
         required: true
     }
+},{
+    timestamps: true
 })
 
-const Pizza = mongoose.model('pizza_api_collections', pizzaSchema)
-module.exports = Pizza;
+let pizzaSchema = mongoose.model('Pizza', PizzaSchema)
+
+module.exports = pizzaSchema;
 
 
 

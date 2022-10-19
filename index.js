@@ -1,35 +1,60 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const logger = require('morgan');
+const cors = require('cors');
+const createError = require('http-errors');
+const pe = require('parse-error');
 
-const routesPizza = require('./routes/pizza-route')
-const routesRestaurant = require('./routes/restaurant-route')
-const routesEmployee = require('./routes/employee-route')
-const routesClient = require('./routes/client-route')
-const routesOrder = require('./routes/order-route')
+const app = express();
+const port = 3000;
 
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose')
+app.use(logger('dev'));
+app.use(express.json({limit: '800mb'}));
+app.use(express.urlencoded({
+    extended: false,
+    limit: '800mb'
+}));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set('json spaces', 2);
-app.set('view engine', 'ejs');
+// CORS
+app.options("*", cors());
+app.use(cors());
 
-routesPizza(app)
-routesRestaurant(app)
-routesEmployee(app)
-routesClient(app)
-routesOrder(app)
+app.get('/', (req, res) => {
+    res.json({
+        version: 'v1.0.0',
+        status: true
+    });
+});
+
+// Routes
+const employees = require('./routes/employees');
+const restaurants = require('./routes/restaurants');
+const pizzas = require('./routes/pizzas');
+const clients = require('./routes/clients');
+const orders = require('./routes/orders');
+
+app.use([pizzas, restaurants, employees, clients, orders])
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+    let errorMessage = {};
+    errorMessage.message = err.message;
+    errorMessage.error = req.app.get('env') === 'development' ? err : {};
+
+    errorMessage.status = err.status || 500;
+
+    res.json(errorMessage);
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-  mongoose.connect('mongodb://localhost:27017/pizza_api_database');
-  mongoose.connection
-      .once('open', () => console.log("Connexion à MongoDB établie !"))
-      .on('error', (error) => {
-          console.warn('Warning', error);
-      })
-})
+    console.log(`Server is starting on port ${port}`);
+});
 
-module.exports = app;
+// Important because it prevents nodejs app from crashing
+process.on('unhandledRejection', error => {
+    console.error('Uncaught Error', pe(error));
+});
