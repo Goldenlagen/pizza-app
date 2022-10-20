@@ -1,0 +1,652 @@
+{
+	"info": {
+		"_postman_id": "925efcd4-54bb-460f-9cfd-7a4f4f647736",
+		"name": "PizzaApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23953350"
+	},
+	"item": [
+		{
+			"name": "Pizza",
+			"item": [
+				{
+					"name": "Get Pizza with Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/pizza/{{pizza_name}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pizza",
+								"{{pizza_name}}"
+							]
+						},
+						"description": "Get a pizza details by providing it's name"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Pizzas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/pizzas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pizzas"
+							]
+						},
+						"description": "Get all pizzas availables"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new Pizza",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ingredients\":[\"Fromage\",\"Oeufs\",\"SauceTomate\"],\r\n    \"name\":\"Calzone\",\r\n    \"price\":\"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pizzas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pizzas"
+							]
+						},
+						"description": "Add a new pizza to the list"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Pizza",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": \"9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pizza/{{pizza_id}}?price=9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pizza",
+								"{{pizza_id}}"
+							],
+							"query": [
+								{
+									"key": "price",
+									"value": "9"
+								}
+							]
+						},
+						"description": "Modify a pizza details"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pizza",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/pizza/{{pizza_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pizza",
+								"{{pizza_id}}"
+							]
+						},
+						"description": "Delete a pizza by proving it's Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get Order with Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/{{order_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"{{order_id}}"
+							]
+						},
+						"description": "Get order details with id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all orders with restaurant Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/restaurant/{{restaurant_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"restaurant",
+								"{{restaurant_id}}"
+							]
+						},
+						"description": "Get all order related to a restaurant id"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": [1,2],\r\n    \"paymentStatus\": false,\r\n    \"orderStatus\": false,\r\n    \"clientId\": 1,\r\n    \"restaurantId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Add a new order"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentStatus\": true,\r\n    \"orderStatus\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/{{order_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"{{order_id}}"
+							]
+						},
+						"description": "Modify order details"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Get Client with Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients/{{client_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						},
+						"description": "Get a client details with it's id"
+					},
+					"response": []
+				},
+				{
+					"name": "Add new Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mathieu\",\r\n    \"lastname\": \"Ranieri\",\r\n    \"address\": \"10 Avenue des Champs Elysées\",\r\n    \"phone\": \"0102030405\",\r\n    \"email\": \"mathieu.ranieri@estiam.com\",\r\n    \"password\": \"Password1234\",\r\n    \"card_number\":\"1111-2222-3333-4444\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "Adding a new client by providing it's informations"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"2 Rue de Paris\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/client/{{client_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"client",
+								"{{client_id}}"
+							]
+						},
+						"description": "Modify clients details"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/client/{{client_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"client",
+								"{{client_id}}"
+							]
+						},
+						"description": "Delete a client by providing it's id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "Get the list of all registered clients"
+					},
+					"response": []
+				},
+				{
+					"name": "API Client Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mathieu.ranieri@estiam.com\",\r\n    \"password\":\"Password1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/clients_login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients_login"
+							]
+						},
+						"description": "Logging with a client email and password to get an API Token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "Get All Restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/restaurants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"restaurants"
+							]
+						},
+						"description": "Get all registered restaurants"
+					},
+					"response": []
+				},
+				{
+					"name": "Add new Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mon resto\",\r\n    \"address\": \"12 rue de la pizza\",\r\n    \"city\": \"Paris\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/restaurants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"restaurants"
+							]
+						},
+						"description": "Add a new restaurant by providing it's informations"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Restaurant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Mon super resto\",\r\n    \"address\": \"12 rue de la super pizza\",\r\n    \"city\": \"Bordeaux\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/restaurants/{{restaurant_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"restaurants",
+								"{{restaurant_id}}"
+							]
+						},
+						"description": "Modify a restaurant details"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/restaurants/{{restaurant_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"restaurants",
+								"{{restaurant_id}}"
+							]
+						},
+						"description": "Delete restaurant by providing it's id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Get all Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/employees",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employees"
+							]
+						},
+						"description": "Get employees list"
+					},
+					"response": []
+				},
+				{
+					"name": "Add new Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Hugo\",\r\n    \"lastName\":\"Umbert\",\r\n    \"email\":\"hugo.umbert@estiam.com\",\r\n    \"password\":\"Password1234\",\r\n    \"restaurantId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/employee",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employee"
+							]
+						},
+						"description": "Add a new employee"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant\":\"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/employees/{{employee_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employees",
+								"{{employee_id}}"
+							]
+						},
+						"description": "Modify employee details"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/employees/{{employee_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employees",
+								"{{employee_id}}"
+							]
+						},
+						"description": "Delete an employee by providing it's id"
+					},
+					"response": []
+				},
+				{
+					"name": "API Employee Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"hugo.umbert@estiam.com\",\r\n    \"password\":\"Password1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/employees_login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employees_login"
+							]
+						},
+						"description": "Provide email and password to get the API Token for employees"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "pizza_name",
+			"value": "Calzone",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "2",
+			"type": "string"
+		},
+		{
+			"key": "client_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "restaurant_id",
+			"value": "2",
+			"type": "string"
+		},
+		{
+			"key": "employee_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "pizza_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

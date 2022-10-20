@@ -15,9 +15,9 @@ const listEmployee = async function(req, res, next) {
 };
 
 const modifyEmployee = async function(req, res, next) {
-    let modifyEmployeeProces = await employeesServices.modifyEmployee(req.params.id, req.body);
+    let modifyEmployeeProcess = await employeesServices.modifyEmployee(req.params.id, req.body);
 
-    return res.status(200).send(modifyEmployeeProces);
+    return res.status(200).send(modifyEmployeeProcess);
 };
 
 const deleteEmployee = async function(req, res, next) {
