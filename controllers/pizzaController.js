@@ -2,6 +2,10 @@ const { Pizza } = require('./../models');
 const PizzasService = require('./../services/PizzasService');
 const pizzasServices = new PizzasService({ Pizza });
 
+/**
+ * 
+ * @api {get} /pizzas Get all pizzas
+ */
 const getAllPizzas = async function(req, res, next) {
     let getAllPizzasProcess = await pizzasServices.getAllPizzas(req.query);
 
@@ -14,6 +18,13 @@ const getPizzaByName = async function(req, res, next) {
     return res.status(200).send(getPizzaByNameProcess);
 };
 
+/**
+ * 
+ * @api {post} /pizza Add pizza
+ * @apiBody {String} [name] Pizza's name
+ * @apiBody {Array} [ingredients] Pizza's ingredients
+ * @apiBody {String} [price] Pizza's price
+ */
 const addPizza = async function(req, res, next) {
     let addPizzaProcess = await pizzasServices.addPizza(req.body);
 
