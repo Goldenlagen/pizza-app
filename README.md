@@ -15,3 +15,15 @@ node index.js
 ```
 
 You can now use api 😎.
+
+## More informations
+
+1. API Authorization
+Two different way of using API :
+- Create an Employee
+  - Access to Restaurants, Pizza configuration, Client list, Order List
+- Create a Client
+  - Access to Pizza list, Client configuration, Order Adding
+  
+  2. Methods
+  See Postman documentation with all the methods
