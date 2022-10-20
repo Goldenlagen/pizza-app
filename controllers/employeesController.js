@@ -26,9 +26,17 @@ const deleteEmployee = async function(req, res, next) {
     return res.status(200).send(deleteEmployeeProcess);
 };
 
+const loginEmployee = async function(req, res, next) {
+
+    let loginEmployeeProcess = await employeesServices.loginEmployee(req.body);
+
+    return res.status(200).send(loginEmployeeProcess);
+};
+
 module.exports = {
     addEmployee,
     listEmployee,
     modifyEmployee,
-    deleteEmployee
+    deleteEmployee,
+    loginEmployee
 }
