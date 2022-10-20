@@ -23,7 +23,7 @@ class PizzaServices {
         }
     }
 
-    async getAllPizza(paginationData) {
+    async getAllPizzas(paginationData) {
         console.log(this.pizzaModel)
         let limit = paginationData.limit || 10;
         let page = paginationData.page || 0;

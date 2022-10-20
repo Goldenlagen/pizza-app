@@ -74,6 +74,37 @@ class EmployeesService {
             message: 'Employee Deleted Successfully!'
         };
     }
+
+    async loginEmployee(data) {
+        if (data.email && data.password) {
+            let _employee = await this.employeeModel.findOne({
+                email: data.email
+            }).exec();
+
+            if (_employee) {
+                let isPwdValid = _employee.comparePassword(data.password);
+
+                if (isPwdValid) {
+                    return {
+                        data: _employee,
+                        token: _employee.getJWT()
+                    };
+                } else {
+                    return {
+                        message: 'Password is not valid!'
+                    };
+                }
+            } else {
+                return {
+                    message: 'User Not Found!'
+                };
+            }
+        } else {
+            return {
+                message: 'Missing Data!!'
+            };
+        }
+    }
 }
 
 module.exports = EmployeesService;
