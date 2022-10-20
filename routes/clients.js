@@ -1,16 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const employeesController = require('../controllers/clientsController');
+const clientsController = require('../controllers/clientsController');
+const authJwt = require('../middlewares/authEmployeeJwt');
 
-router.get('/clients', employeesController.listClients);
+router.get('/clients', [authJwt.verifyToken], clientsController.listClients);
 
-router.post('/clients', employeesController.addClient);
+router.post('/clients', clientsController.addClient);
 
-router.get('/clients/:id', employeesController.getClientById);
+router.get('/clients/:id', clientsController.getClientById);
 
-router.put('/clients/:id', employeesController.modifyClient);
+router.put('/clients/:id', clientsController.modifyClient);
 
-router.delete('/clients/:id', employeesController.deleteClient);
+router.delete('/clients/:id', clientsController.deleteClient);
+
+router.post('/clients_login', clientsController.loginClient);
 
 module.exports = router;

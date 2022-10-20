@@ -32,10 +32,17 @@ const deleteClient = async function(req, res, next) {
     return res.status(200).send(deleteClientProcess);
 };
 
+const loginClient = async function(req, res, next) {
+    let loginClientProcess = await clientsServices.loginClient(req.body);
+
+    return res.status(200).send(loginClientProcess);
+};
+
 module.exports = {
     addClient,
     getClientById,
     modifyClient,
     deleteClient,
-    listClients
+    listClients,
+    loginClient
 }

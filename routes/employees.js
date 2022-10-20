@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const employeesController = require('../controllers/employeesController');
-const authJwt = require('../middlewares/authJwt');
+const authJwt = require('../middlewares/authEmployeeJwt');
 
 router.post('/employees', employeesController.addEmployee);
 
@@ -12,6 +12,6 @@ router.put('/employees/:id', [authJwt.verifyToken], employeesController.modifyEm
 
 router.delete('/employees/:id', [authJwt.verifyToken], employeesController.deleteEmployee);
 
-router.post('/employees/login', employeesController.loginEmployee);
+router.post('/employees_login', employeesController.loginEmployee);
 
 module.exports = router;

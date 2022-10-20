@@ -47,5 +47,4 @@ EmployeeSchema.methods.getJWT = function () {
 let employeeSchema = mongoose.model('Employee', EmployeeSchema);
 
 
-
 module.exports = employeeSchema;

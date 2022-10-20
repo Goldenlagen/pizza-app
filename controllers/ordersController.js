@@ -3,7 +3,7 @@ const OrdersService = require('./../services/OrdersService');
 const orderServices = new OrdersService({ Order });
 
 const getOrderByRestaurantId = async function(req, res, next) {
-    let getOrderByRestaurantIdProcess = await orderServices.getOrderByRestaurantId(req.params.id);
+    let getOrderByRestaurantIdProcess = await orderServices.getOrderByRestaurantId(req.body, req.params.id);
 
     return res.status(201).send(getOrderByRestaurantIdProcess);
 };

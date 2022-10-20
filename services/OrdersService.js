@@ -5,7 +5,7 @@ class OrdersService {
     }
 
     async addOrder(data) {
-        _order = new this.orderModel(data);
+        let _order = new this.orderModel(data);
         await _order.save();
 
         return {
@@ -14,12 +14,13 @@ class OrdersService {
     }
 
     async getOrderByRestaurantId(paginationData, restaurantId) {
+        console.log(restaurantId)
         let limit = paginationData.limit || 10;
         let page = paginationData.page || 0;
 
         let _orders = await this.orderModel.find({restaurantId: restaurantId})
-            .limit(limit)
-            .skip(limit * page);
+            // .limit(limit)
+            // .skip(limit * 1);
 
         return {
             count: _orders.length,

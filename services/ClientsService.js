@@ -42,7 +42,7 @@ class ClientsService {
         let _clients = await this.clientModel.find().exec();
 
         return {
-            restaurants: _clients
+            clients: _clients
         };
     }
 
@@ -60,7 +60,7 @@ class ClientsService {
 
             return {
                 message: 'Client Updated Successfully!',
-                employee: _client
+                client: _client
             };
         } else {
             return {
@@ -75,6 +75,37 @@ class ClientsService {
         return {
             message: 'Client Deleted Successfully!'
         };
+    }
+
+    async loginClient(data) {
+        if (data.email && data.password) {
+            let _employee = await this.clientModel.findOne({
+                email: data.email
+            }).exec();
+
+            if (_employee) {
+                let isPwdValid = _employee.comparePassword(data.password);
+
+                if (isPwdValid) {
+                    return {
+                        data: _employee,
+                        token: _employee.getJWT()
+                    };
+                } else {
+                    return {
+                        message: 'Password is not valid!'
+                    };
+                }
+            } else {
+                return {
+                    message: 'User Not Found!'
+                };
+            }
+        } else {
+            return {
+                message: 'Missing Data!!'
+            };
+        }
     }
 }
 
