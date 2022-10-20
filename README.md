@@ -1,5 +1,10 @@
 # 🍕 Pizza App
 
+## Authors
+
+Mathieu RANIERI
+Hugo UMBERT
+
 ## Get started
 1. Clone this repository
 ```bash
@@ -25,5 +30,5 @@ Two different way of using API :
 - Create a Client
   - Access to Pizza list, Client configuration, Order Adding
   
-  2. Methods
-  See Postman documentation with all the methods
+2. Methods
+See Postman documentation with all the methods
